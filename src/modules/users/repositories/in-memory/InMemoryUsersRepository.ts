@@ -16,6 +16,10 @@ export class InMemoryUsersRepository implements IUsersRepository {
 
   async create(data: ICreateUserDTO): Promise<User> {
     const user = new User();
+    Object.assign(user,{
+      "created_at": new Date(),
+      "updated_at": new Date(),
+    });
     Object.assign(user, data);
     this.users.push(user);
     return user;
